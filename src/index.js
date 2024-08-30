@@ -1,17 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { pizzaData } from "./data";
+import { Menu, Footer, Header } from "./components/index";
+import './index.css'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+function App(params) {
+    // const pizzaDat = []
+    return (
+        <div className="max-w-7xl my-0 mx-auto flex flex-col  gap-[4.8rem]">
+            <Header className="header" />
+            <Menu menu={pizzaData} className="menu" />
+            <Footer className="footer" />
+        </div>
+    );
+}
+
+// React v18
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    //tryb ścisły
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// Before React v18
+// React.render(<App />, document.getElementById("root"));
