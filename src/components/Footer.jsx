@@ -1,7 +1,7 @@
 import React from "react";
 import {Order} from "./index"
 
-export default function Footer({className =''}) {
+export default function Footer({className ='', handleOrder, selectedPizza}) {
     const hour = new Date().getHours()
     const openHour = 8;
     const closeHour = 23;
@@ -10,7 +10,10 @@ export default function Footer({className =''}) {
     return (
         <footer className={className}>
             {isOpen ? (
-                <Order closeHour={closeHour} openHour={openHour}/>
+                <Order closeHour={closeHour}
+                    openHour={openHour}
+                    handleOrder={handleOrder}
+                    selectedPizza={selectedPizza} />
             ) : (
                 <p className="text-center">We're happy to welcome you between  {openHour}:00 and {closeHour}:00.</p>
             )}

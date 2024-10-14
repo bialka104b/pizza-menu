@@ -3,7 +3,8 @@ import {Pizza} from "./index"
 
 export default function Menu({
     menu = [],
-    className = ''
+    className = '',
+    selectPizza, selectedPizza
 }) {
     const numPizzas = menu.length;
     return (
@@ -13,8 +14,16 @@ export default function Menu({
                 <>
                     <p>Authentic Italian cuisine. 6 creative dishes to choose from. All from our stone oven, all organic, all delicious.</p>
                     <ul className="pizzas">
-                        {menu.map((pizzaData, index) => (
-                            <Pizza data={pizzaData} key={index} />
+                        {menu
+                            
+                            .map((pizzaData, index) => (
+                                <Pizza
+                                    key={index}
+                                    index={index}
+                                    data={pizzaData}
+                                    selectPizza={selectPizza}
+                                    selectedPizza={selectedPizza}
+                                />
                         ))}
                     </ul>
                 </>
@@ -24,3 +33,17 @@ export default function Menu({
         </div>
     );
 }
+
+// import React from "react";
+
+// export default function Pizza({ data, index, selectPizza, selectedPizza }) {
+//     const { name, price } = data;
+//     const isSelected = selectedPizza === index; // Sprawdza, czy pizza jest wybrana
+
+//     return (
+//         <li className={`pizza ${isSelected ? 'selected' : ''}`} onClick={() => selectPizza(index)}>
+//             <h3>{name}</h3>
+//             <p>{price} USD</p>
+//         </li>
+//     );
+// }
